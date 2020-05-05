@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int KEEP_ALIVE_SECONDS = 30;
     private static final BlockingQueue<Runnable> sPoolWorkQueue =
-        new LinkedBlockingQueue<>(10);
+        new LinkedBlockingQueue<>(5);
     private static final ThreadPoolExecutor.DiscardOldestPolicy handler =
         new ThreadPoolExecutor.DiscardOldestPolicy() {
             @Override
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        for (int i = 0; i < 20000; i++) {
+        for (int i = 0; i < 100; i++) {
             executor.execute(new RunnableWrapper(i));
         }
     }
